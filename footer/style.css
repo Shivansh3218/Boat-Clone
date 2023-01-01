@@ -1,0 +1,197 @@
+body {
+    background-color: rgb(0, 0, 0);
+}
+
+.head-1 {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: xx-large;
+    margin-bottom: -5rem;
+}
+.quotes-of-news-div{
+display: flex;
+}
+p{
+    display: flex;
+    align-items: center;
+    width: 40rem;
+    color: white;
+}
+#hash{
+    color: rgb(255, 0, 0);
+    font-size: xx-large;
+    margin: 10rem;
+}
+
+
+.buttons-div {
+    display: flex;
+    margin-top: -3rem;
+    justify-content: space-around;
+}
+
+.logo-image-news {
+    width: 13rem;
+    background: none;
+    filter: grayscale(1);
+    opacity: 0.2;
+    height: 5rem;
+}
+
+.first-para{
+  transition: 1s;
+}
+.logo-image-news:hover{
+    opacity: 1.5;
+    filter: none;
+}
+
+.numbers-worldwide-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.numbers-worldwide {
+    /* width: 80rem; */
+    width: 100%;
+    height: 100%;
+    /* height: 40rem; */
+}
+
+.promise {
+    color: whitesmoke;
+    text-align: center;
+    padding-bottom: 3rem;
+
+}
+.wrapper-ofpromise{
+    display: flex;
+    gap: 3rem;
+    width: 20rem;
+}
+.benifits{
+    display: flex;
+    justify-content: center;
+    margin-left:8rem ;
+  
+}
+
+.text-of-benifits {
+    color: white; 
+}
+
+.image-of-benifits {
+    width: 3rem;
+    margin-top: 0.5rem;
+    height: 2rem;
+}
+
+.boat-logo-section {
+    width: 8rem;
+    height: 3rem;
+}
+
+.promise-not-to-spam {
+    color: aliceblue;
+    padding: 3rem 0 3rem;
+}
+
+.below-brand-promise {
+    margin-left: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+.boat-advertisement{
+    color: white;
+    text-align: center;
+    margin-left:  10rem ;
+    padding: 5rem;
+ 
+}
+
+
+.email-subscribe-box {
+    border: 1px solid blanchedalmond;
+    display: inline-block;
+    padding: 0.2rem;
+    margin-bottom: 2rem;
+}
+
+#email-box {
+    border: none;
+    width: 14rem;
+    background-color: inherit;
+    height: 40px;
+    color: whitesmoke;
+}
+
+.subscribe {
+    color: rgb(255, 255, 255);
+    padding: 0.5rem;
+    width: 8rem;
+    background-color: red;
+
+}
+
+.social-media-icons {
+    display: flex;
+    gap: 01rem;
+    margin-left: 4rem;
+
+}
+.btnn{
+    width: 2rem;
+}
+.social-icon {
+    background: inherit;
+    color: rgb(255, 255, 255);
+}
+
+
+.social-icon:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    color: black;
+}
+h1{
+    color: aliceblue;
+}
+a{
+    text-decoration: none;
+    color: rgb(230, 230, 230);
+}
+a:hover{
+    color: blueviolet;
+}
+.links-of-company{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.bottom-above-footer{
+    margin:4rem ;
+    display: flex;
+    justify-content: space-between;
+}
+.get-app-on{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+button{
+    background: inherit;
+}
+button:hover{
+    cursor: pointer;
+   
+}
+h3{
+    color: white;
+}
+
+footer{
+    color: white;
+    text-align: center;
+    padding: 5rem;
+}

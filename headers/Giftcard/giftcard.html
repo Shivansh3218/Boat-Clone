@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <link rel="stylesheet" href="/index.css" />
+  <link rel="stylesheet" href="/headers/Giftcard/giftcard.css">
+    <link rel="stylesheet" href="/headers/header.css">
+    <script
+      src="https://kit.fontawesome.com/6d08c22a70.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://kit.fontawesome.com/d3f3344fc9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="header_alert">
+          <a href="">
+            <p>
+              Catch daily lightning deals⚡️Your favourites starting @ ₹549. Shop Now!
+            </p>
+          </a>
+        </div>
+      
+        <div class="header_nav">
+          <nav>
+            <div class="header_nav-left" onmouseover="remove()">
+              <a href=""
+                ><img
+                  src="/header-images/Boat-Logo.avif"
+                  alt=""
+                  width="80"
+                  height="40"
+              /></a>
+            </div>
+            <div class="header_nav-center">
+              <ul>
+                <li
+                  class="hover-underline-animation nav_shop"
+                  onmouseover="moreremove()"
+                >
+                  Shop<i class="fa-solid fa-chevron-down"></i>
+                </li>
+                <li class="hover-underline-animation" onmouseover="remove()">
+                  <a href="">Daily Deals</a>
+                </li>
+                <li class="hover-underline-animation" onmouseover="remove()">
+                  <a href="">Offer Zone</a>
+                </li>
+                <li
+                  class="hover-underline-animation nav_more"
+                  onmouseover="shopremove()"
+                >
+                  More<i class="fa-solid fa-chevron-down"></i>
+                  <div class="more_dropdown">
+                    <ul>
+                      <li><a href="">Gifting</a></li>
+                      <li><a href="">Do What Floats Your boAt</a></li>
+                      <li><a href="">Blogs</a></li>
+                      <li><a href="">Meet the boAtheads</a></li>
+                      <li><a href="">Coperate Orders</a></li>
+                      <li><a href="">Earn Rs.100</a></li>
+                      <li><a href="">Careers</a></li>
+                      <li><a href="">Social Responsibility</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+              <div class="shop_show">
+                <div class="shop-content">
+                  <a href=""><img src="/header-images/shop-drop1.webp" alt="" /></a>
+                  <a href=""><img src="/header-images/shop-drop2.webp" alt="" /></a>
+                  <a href=""><img src="/header-images/shop-drop3.webp" alt="" /></a>
+                  <a href=""><img src="/header-images/shop-drop4.webp" alt="" /></a>
+                  <a href=""><img src="/header-images/shop-drop5.webp" alt="" /></a>
+                  <a href=""><img src="/header-images/shop-drop6.webp" alt="" /></a>
+                  <a href=""><img src="/header-images/shop-drop12.webp" alt="" /></a>
+                  <a href=""><img src="/header-images/shop-drop8.webp" alt="" /></a>
+                  <a href=""><img src="/header-images/shop-drop9.webp" alt="" /></a>
+                  <a href=""><img src="/header-images/shop-drop10.webp" alt="" /></a>
+                  <a href=""><img src="/header-images/shop-drop11.webp" alt="" /></a>
+                  <button>Login</button>
+                </div>
+                <a href=""><i class="fa-solid fa-gift"></i></a>
+                <i class="fa-solid fa-cart-shopping cart1"></i>
+              </div>
+            </div>
+            <div class="header_nav-right" onmouseover="remove()">
+              <input class="header-input" type="search" placeholder="Search..." />
+      
+              <i class="fa-solid fa-user logadd"></i>
+              <div class="login">
+                <div class="toplogin">
+                  <h4>Hi boAthead!</h4>
+                  <h3 class="cross">✖</h3>
+                </div>
+      
+                <button class="btn_login">Login</button>
+              </div>
+              <a href=""><i class="fa-solid fa-gift"></i></a>
+              <i class="fa-solid fa-cart-shopping cart"></i>
+            </div>
+          </nav>
+        </div>
+        <aside class="right_aside">
+          <div class="cart_top">
+            <h3>Your Cart (Cart)</h3>
+            <div class="cart_close">✖</div>
+          </div>
+          <div class="cart_top2">
+            <h6>
+              Free Shipping sitewide | <span>Cash On Delivery</span> available for
+              order value upto <span>₹3000</span>
+            </h6>
+          </div>
+          <div class="cart_main">
+            <div class="empty">
+              <h5>Your cart is empty</h5>
+              <button class="strtbtn">START SHOPPING</button>
+            </div>
+            <div class="shippingTotal"></div>
+          </div>
+        </aside>
+      
+        <aside class="left_aside">
+          <div class="bar_close">✖</div>
+          <div class="top">
+            <div class="btn_headers">
+              <div class="lists">Categories</div>
+              <div class="menu">Menu</div>
+            </div>
+            <div class="lists_link">
+              <a href=""><img src="./header-images/shop-drop1.webp" alt="" /></a>
+              <a href=""><img src="./header-images/shop-drop2.webp" alt="" /></a>
+              <a href=""><img src="./header-images/shop-drop3.webp" alt="" /></a>
+              <a href=""><img src="./header-images/shop-drop4.webp" alt="" /></a>
+              <a href=""><img src="./header-images/shop-drop5.webp" alt="" /></a>
+              <a href=""><img src="./header-images/shop-drop6.webp" alt="" /></a>
+              <a href=""><img src="./header-images/shop-drop12.webp" alt="" /></a>
+              <a href=""><img src="./header-images/shop-drop8.webp" alt="" /></a>
+              <a href=""><img src="./header-images/shop-drop9.webp" alt="" /></a>
+              <a href=""><img src="./header-images/shop-drop10.webp" alt="" /></a>
+              <a href=""><img src="./header-images/shop-drop11.webp" alt="" /></a>
+            </div>
+            <div class="menu_link">
+              <a href="">
+                <h3>Track Your Order</h3>
+              </a>
+              <a href="">
+                <h3>Daily Deals</h3>
+              </a>
+      
+              <div class="more1">
+                <h3 style="color: white">
+                  More
+                  <i class="fa-solid fa-plus moreicon" style="color: white"></i>
+                  <ul class="moreplus">
+                    <li><a href="">Gifting</a></li>
+                    <li><a href="">Do What Floats Your boAt</a></li>
+                    <li><a href="">Blogs</a></li>
+                    <li><a href="">Meet the boAtheads</a></li>
+                    <li><a href="">Coperate Orders</a></li>
+                    <li><a href="">Earn Rs.100</a></li>
+                    <li><a href="">Careers</a></li>
+                    <li><a href="">Social Responsibility</a></li>
+                  </ul>
+                </h3>
+              </div>
+              <a href="">
+                <h3>Account</h3>
+              </a>
+            </div>
+          </div>
+          <div class="bottom">
+            <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+            <a href=""> <i class="fa-brands fa-twitter"></i></a>
+            <a href=""> <i class="fa-brands fa-instagram"></i></a>
+            <a href=""><i class="fa-brands fa-youtube"></i></a>
+            <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </aside>
+        <div class="header_nav1">
+          <nav>
+            <div class="header_nav1-left">
+              <i class="fa-solid fa-bars bar"></i>
+            </div>
+            <div class="header_nav1-middle">
+              <a href="" onmouseover="moreremove()"
+                ><img
+                  src="./header-images/Boat-Logo.avif"
+                  alt=""
+                  width="80"
+                  height="40"
+              /></a>
+            </div>
+            <div class="header_nav1-right">
+              <i class="fa-solid fa-user logadd3"></i>
+              <div class="login3">
+                <div class="toplogin3">
+                  <h4>Hi boAthead!</h4>
+                  <h3 class="cross3">✖</h3>
+                </div>
+                <button>Login</button>
+              </div>
+              <a href=""><i class="fa-solid fa-gift"></i></a>
+              <i class="fa-solid fa-cart-shopping cart5"></i>
+            </div>
+          </nav>
+          <input class="header-input1" type="search" placeholder="Search..." />
+        </div>
+        <aside class="right_aside">
+          <div class="cart_top">
+            <h3>Your Cart (Cart)</h3>
+            <div class="cart_close">✖</div>
+          </div>
+          <div class="cart_top2">
+            <h6>
+              Free Shipping sitewide | <span>Cash On Delivery</span> available for
+              order value upto <span>₹3000</span>
+            </h6>
+          </div>
+          <div class="cart_main">
+            <h5>Your cart is empty</h5>
+            <button class="strtbtn">START SHOPPING</button>
+          </div>
+        </aside>
+      
+        <div class="search_popup">
+          <input
+            class="search_popup-input"
+            type="search"
+            placeholder="Search..."
+            spellcheck="false"
+            autofocus
+            autocomplete="off"
+          />
+          <span class="search_pop-close">CLOSE</span>
+          <ul class="Search_list">
+            <li class="Search_list-label">True Wireless Earphones</li>
+            <li class="Search_list-label">Smart Watches</li>
+            <li class="Search_list-label">Wireless Neckbands</li>
+            <li class="Search_list-label">Wireless Headphones</li>
+            <li class="Search_list-label">Powerbanks</li>
+            <li class="Search_list-label">Wired Earphones</li>
+            <li class="Search_list-label">Bluetooth Speakers</li>
+            <li class="Search_list-label">Soundbars</li>
+            <li class="Search_list-label">Trimmers</li>
+            <li class="Search_list-label">Marvel products</li>
+          </ul>
+        </div>
+        <div class="collections" onmouseover="shopremove()">
+          <h2>Collections</h2>
+      
+          <a href=""><img src="/header-images/shop-drop1.webp" alt="" /></a>
+          <a href=""><img src="/header-images/shop-drop2.webp" alt="" /></a>
+          <a href=""><img src="/header-images/shop-drop3.webp" alt="" /></a>
+          <a href=""><img src="/header-images/shop-drop4.webp" alt="" /></a>
+          <a href=""><img src="/header-images/shop-drop5.webp" alt="" /></a>
+          <a href=""><img src="/header-images/shop-drop6.webp" alt="" /></a>
+          <a href=""><img src="/header-images/shop-drop12.webp" alt="" /></a>
+          <a href=""><img src="/header-images/shop-drop8.webp" alt="" /></a>
+          <a href=""><img src="/header-images/shop-drop9.webp" alt="" /></a>
+          <a href=""><img src="/header-images/shop-drop10.webp" alt="" /></a>
+          <a href=""><img src="/header-images/shop-drop11.webp" alt="" /></a>
+        </div>
+
+        <div class="header_banner" onmouseover="remove()">
+            <a href="">
+              <img
+                class="mySlides animate__animated animate__fadeIn"
+                src="/header-images/banner-1.webp"
+                style="width: 100%"
+            /></a>
+            <a href=""
+              ><img
+                class="mySlides animate__animated animate__fadeIn"
+                src="/header-images/banner-2.gif"
+                style="width: 100%"
+            /></a>
+            <a href=""
+              ><img
+                class="mySlides animate__animated animate__fadeIn"
+                src="/header-images/banner-3.webp"
+                style="width: 100%"
+            /></a>
+            <a href=""
+              ><img
+                class="mySlides animate__animated animate__fadeIn"
+                src="/header-images/banner-4.webp"
+                style="width: 100%"
+            /></a>
+    
+            <button class="btn-left" role="presentation" onclick="plusDivs(-1)">
+              <span>‹</span>
+            </button>
+            <button class="btn-right" role="presentation" onclick="plusDivs(1)">
+              <span>›</span>
+            </button>
+          </div>
+      </header>
+      <!-- -------------------------------------------------------------- -->
+      <div class="maincontainer_">
+        <div class="home_giftcard_btn_container">
+               <a href="/index.html"> <button class="home_btn">Home</button></a><span> /</span>
+               <a href="/headers/Giftcard/giftcard.html"> <button class="giftcard_btn">Gift Card</button></a>
+        </div>
+            <div class="gift_card_container_row">
+                
+                <div class="vertical_img_container">
+                    <div class="small_giftcard_img_containers1">
+                        <img src="/body/Images/Gift-Card-500_612x.webp" class="gift_card_small_img" alt="">
+                     </div>
+                    <div class="small_giftcard_img_containers2">
+                        <img src="/body/Images/Gift-Card-1000_612x.webp" class="gift_card_small_img" alt="">
+                    </div>
+                    <div class="small_giftcard_img_containers3">
+                        <img src="/body/Images/Gift-Card-2000_612x.webp" class="gift_card_small_img" alt="">
+                    </div>
+                    <div class="small_giftcard_img_containers4">
+                        <img src="/body/Images/Gift-Card-5000_612x.webp" class="gift_card_small_img" alt="">
+                    </div>
+                </div>
+                <div class="single_img_container">
+                    <img src="/body/Images/Gift-Card-5000_612x.webp" class="gift_card_big_img4" alt="">
+                    <img src="/body/Images/Gift-Card-1000_612x.webp" class="gift_card_big_img2" alt="">
+                    <img src="/body/Images/Gift-Card-2000_612x.webp" class="gift_card_big_img3" alt="">
+                    <img src="/body/Images/Gift-Card-500_612x.webp" class="gift_card_big_img1" alt="">
+                </div>
+
+                <div class="gift_card_details_container">
+                    <h2 class="gift_card_heading">Gift Card</h2>
+                    <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> 5.0 | 32 reviews <i class="fa-solid fa-check"></i> </p>
+                    <hr>
+                    <p class="denomination" style="color:black ;">Denominations: <span class="denomination_cost">₹ 500</span></p>
+                    <button class="cost_btn_500">₹ 500</button>
+                    <button class="cost_btn_1000">₹ 1000</button>
+                    <button class="cost_btn_2000">₹ 2000</button>
+                    <button class="cost_btn_5000">₹ 5000</button>
+                    <div class="pop_up_btn_div">
+                        <button class="pop_up_btn">3 interest-free EMIs of Rs. 166.66 with <img src="https://pl-widget.capitalfloat.com/assets/images/w369Light/w369Logo.svg" class="logo" alt=""></button>
+                    </div>
+                </div>
+                <div class="add_to_cart_div">
+                    <h2 class="cost_tag">₹ 500</h2>
+                    <p class="inclusive_taxes_text">Inclusive of all taxes</p>
+                    <div class="instock">
+                        <h3 class="in_stock_text">Out of stock Stock<h3>
+                        <p class="_carts">Currently 0 in cart</p>
+                    </div>
+                    <div class="counter_div">
+
+                    </div>
+                    <div class="add_to_cart_btnDiv">
+                        <button class="add_to_cart_btn">ADD TO CART</button>
+                        <button class="buy_now_btn">BUY NOW</button>
+                    </div>
+                </div>
+            </div>
+
+      </div>
+      <script src="/headers/header.js"></script>
+      <script src="/index.js"></script>
+      <script src="/headers/Giftcard/giftcard.js"></script>
+      
+</body>
+</html>

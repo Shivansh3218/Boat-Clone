@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&family=Roboto:ital,wght@1,300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body,.main_container{
+    background-color: #282828;
+    
+}
+
+.container{
+    max-width: 600px;
+    margin: 0 auto;
+    padding-top: 100px;
+    text-align: center;
+    color: white;
+}
+
+.register_heading{
+    font-size: 50px;
+    margin: 0 0 20px 0;
+}
+
+.input_email,.input_fname,.input_lname,.input_pswd{
+    width: 400px;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid gray;
+    outline: none;
+    background-color: #282828;
+    color: white;
+}
+
+.creat_account_btn{
+    border: none;
+    outline: none;
+    width: 400px;
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+    padding: 12px;
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+p{
+    color: aliceblue;
+    font-size: 18px;
+    margin: 0 0 30px 0;
+}
+
+.back_to_login{
+    color: rgb(137, 136, 136);
+    font-weight: bolder;
+}
+
+.already_have_account{
+    padding-bottom: 100px;
+}

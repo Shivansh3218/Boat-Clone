@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&family=Roboto:ital,wght@1,300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body,.main_container{
+    background-color: #282828;
+    
+}
+
+.container_{
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+}
+
+.login_heading{
+    font-size: 50px;
+    margin: 0 0 20px 0;
+    padding-top: 100px;
+}
+
+.enter_email_text{
+    margin: 0 0 50px 0;
+}
+
+.input_email{
+    width: 400px;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    outline: none;
+    background-color: #282828;
+    color: white;
+}
+
+button.recover_pswd{
+    border: none;
+    outline: none;
+    width: 400px;
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+    padding: 12px;
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+p{
+    color: aliceblue;
+    font-size: 18px;
+}
+
+.back_to_login{
+    color: rgb(137, 136, 136);
+    font-weight: bolder;
+}
+
+.remember_pswd_div{
+    padding-bottom: 100px;
+}

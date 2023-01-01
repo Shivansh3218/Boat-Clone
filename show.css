@@ -1,0 +1,134 @@
+.mainX {
+    display: flex;
+    justify-content: space-around;
+}
+
+.main-photo-of-show {
+    width: 30rem;
+    height: 30rem;
+    margin: 5rem 5rem 0 0;
+}
+.wrapper-of-two-container{
+    display: flex;
+    flex-direction: column;
+}
+.wrapper_of_two_container{
+    display: flex;
+    flex-direction: column;
+}
+.product-description-show{
+    color: #efefef;
+}
+.price-of-product-show {
+    color: red;
+}
+.price-of-product-show-old {
+    font-size: small;
+    opacity: 0.7;
+    width: auto;
+    color: black;
+    margin-left: 1rem;
+    text-decoration: line-through;
+    font-weight: bolder;
+}
+
+.money_spending_and_saving {
+    /* margin-top: 10rem; */
+    background-color:#efefef;
+    width: 25rem;
+    border-radius: 1rem;
+    border-radius: 10px;
+    width: 35rem;
+}
+
+.old_and_new_price {
+    background-color:#efefef;
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    border-radius: 1rem;
+    padding: 10px;
+}
+
+.save_your_money_show {
+    display: flex;
+}
+
+.add_to_cart_button_show {
+    background-color: red;
+    color: white;
+    font-weight: 1000;
+    padding: 0.5rem;
+    border: 2px solid red;
+    border-radius: 10px;
+}
+
+.div1_show {
+    width: 200px;
+    height: 20px;
+    background-color: aliceblue;
+    margin-top: -2rem;
+    border-radius: 5px;
+}
+
+.div2_show {
+    width: 120px;
+    height: 20px;
+    padding: 2px;
+    color: black;
+    font-weight: 1000;
+    font-size: smaller;
+    border-radius: 5px;
+    background-color: #fcc50b;
+}
+
+.save_your_money_para{
+    font-size: xx-small;
+    font-weight: 1000;
+    color: green;
+    margin-left: 10px;
+}
+.buy_now_button {
+    color: red;
+    border: 2px solid red;
+    padding: 0.5rem;
+    font-weight: 1000;
+    border-radius: 10px;
+}
+.instock-show{
+    text-align: center;
+    background-color: rgb(208, 214, 219);
+}
+.quantity-added{
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+}
+.counter-of-show{
+    display: flex;
+    border: 1px solid black;
+    margin-top: 0.4rem;
+    border-radius: 5px;
+    margin-left: 10px;
+    width: 6rem;
+    background-color: white;
+    box-sizing: border-box;
+}
+.increment-of-show,.decrement-of-show,#display-of-counter{
+    background-color: white;
+    padding: 0 10px 0  10px;
+    font-size: large;
+    font-weight: 1000;
+    width: 2rem;
+    border-radius: 5px;
+}
+
+
+.buttons-of-show-page{
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+}
+.buy_now_button,.add_to_cart_button_show{
+    margin: 5px;
+}
