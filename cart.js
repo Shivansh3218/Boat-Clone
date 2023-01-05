@@ -1,19 +1,6 @@
-// let cartArray=JSON.parse(sessionStorage.getItem("basketArray"))
-// console.log(cartArray,"oputhdgf");
-// const cart_main = document.querySelector(".cart_main");
-// const empty = document.querySelector(".empty");
-
-console.log('hjjjjjjjjjjjjj');
 let cartArray=JSON.parse(sessionStorage.getItem("cartData"))
 let cartmain=document.querySelector(".cart_main");
 let emptybasket = document.querySelector(".empty");
-console.log(cartArray,"oputhdgf");
-
-// if (cartmain.innerHTML == null) {
-//   emptybasket.style.display = "block";
-//   }
-//   emptybasket.style.display = "none";
-
   const paybtnn = document.querySelector(".payment_Checkout_bottom_btn")
   const paybtnn2 = document.querySelector(".payment_Checkout_bottom_paybtn")
   const paymidd1 =document.querySelector(".payment_Checkout_middle1")
@@ -21,6 +8,10 @@ console.log(cartArray,"oputhdgf");
   const paymentt_Checkout_top2_1 = document.querySelector(".payment_Checkout_top2_1 ")
   const paymentt_Checkout_top2_2 = document.querySelector(".payment_Checkout_top2_2")
   const clearStorage1 = document.querySelector(".clearStorage")
+  const address=document.querySelector(".addressy")
+  const summary=document.querySelector(".summaryy")
+  const closy = document.querySelector(".closyy")
+  const paymentt_Checkout=document.querySelector(".payment_Checkout")
   clearStorage1.addEventListener("click",()=>{
     sessionStorage.clear();
   })
@@ -40,10 +31,6 @@ console.log(cartArray,"oputhdgf");
    
   })
   
-  const address=document.querySelector(".addressy")
-  const summary=document.querySelector(".summaryy")
-  const closy = document.querySelector(".closyy")
-  const paymentt_Checkout=document.querySelector(".payment_Checkout")
   address.addEventListener("click",()=>{
       if(paymidd1.style.display="block"){
           paymidd1.style.display="none"
@@ -101,7 +88,6 @@ console.log(cartArray,"oputhdgf");
       })
         .then((response) => response.json())
         .then((datas)=>{
-           console.log(datas,"lppp");
            html = ` 
            <div class="cartWrap" id="cartWrap_${datas[0]._id}" >
            <img src="${datas[0].productImages[0]}" alt="" width="50%" height="50%">
@@ -147,18 +133,6 @@ let reloadTotal = document.querySelector(".subtotal")
 
      
      cartmain.addEventListener("click", (e) => {
-      console.log('nmnmn');
-      
-      // const sum = cartArray.reduce(
-      //   (previousValue, currentValue) => previousValue + currentValue.item,
-      //   0
-      // );
-      // console.log(sum, "sum");
-      // const total = cartArray.reduce(
-      //   (previousValue, currentValue) => previousValue + currentValue.total,
-      //   0
-      // );
-      // console.log(total, "total");
       let updatePricee=document.querySelector(`#updatedd_${datas[0]._id}`)
       let checkoutQuatityy=document.querySelector(`#quantityy_${datas[0]._id}`)
      
@@ -175,9 +149,9 @@ let reloadTotal = document.querySelector(".subtotal")
 
       sum1=0;
       total1=0
+      
       for(let i=0;i<cartArray.length;i++){
        let element=cartArray[i];
-       console.log(element)
        total1+=element.total
        sum1+=element.item
        
@@ -191,12 +165,10 @@ let reloadTotal = document.querySelector(".subtotal")
           total1=0
           for(let i=0;i<cartArray.length;i++){
             let element=cartArray[i];
-            console.log(element)
             total1+=element.total
             sum1+=element.item
             
            }
-          console.log(cartArray, "minus");
           updatecartt.innerText = sum1;
           basItemm.innerText = sum1;
           originalprice.innerText = `₹${datas[0].price * cartArray[i].item}`;
@@ -216,7 +188,6 @@ let reloadTotal = document.querySelector(".subtotal")
         cartArray[i].item += 1;
         quantity.innerText= cartArray[i].item;
         checkoutQuatityy.innerText=cartArray[i].item;
-        console.log(cartArray, "minus");
         total1+=cartArray[i].total
               sum1+=1
         updatecartt.innerText = sum1;
@@ -234,7 +205,6 @@ let reloadTotal = document.querySelector(".subtotal")
       }
       if (e.target.id == `trash_${datas[0]._id}`) {
         cartArray.splice(i, 1);
-        console.log(cartArray);
         cartwrap.style.display = "none";
         sessionStorage.setItem("cartData",JSON.stringify(cartArray))
       }
@@ -242,17 +212,6 @@ let reloadTotal = document.querySelector(".subtotal")
 
      cartmain.innerHTML+=html
      const cart_items=document.querySelector(".cart_items")
-
-
-
-
-// const sumOfItem = cartArray.reduce(
-//         (previousValue, currentValue) => previousValue + currentValue.total,
-//         0,
-//       );
-      
-//       console.log(sumOfItem)
-//       checkoutsubtotal.innerText= `₹${sumOfItem}`
 cart_items.innerHTML+=html2
         
 })
