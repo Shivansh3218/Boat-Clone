@@ -82,7 +82,8 @@ function generate() {
     .then((response) => response.json())
     .then((result) => {
       for (let i = 0; i < result.length; i++) {
-        if (result[i].tag.length > 5) {
+        console.log(result[i].productImages[0] , 'image zeroth')
+        if (result[i].tag.length > 5 && result[i].productImages[0] && result[i].productImages[1] ) {
           html = ` <div class="main">
            <div class="best-seller-div">
             <div class="wrapper-of-best-seller-images">
@@ -815,7 +816,7 @@ function generate() {
     .then((response) => response.json())
     .then((result) => {
       for (let i = 0; i < result.length; i++) {
-        if (result[i].tag.length > 5) {
+        if (result[i].tag.length > 5 && result[i].productImages[0] && result[i].productImages[1] ) {
 
           html = `
           <div class="main">
@@ -950,6 +951,7 @@ function generate() {
 
 
   // -----------------------------------------------------------------------------
+  
   const data11 = { description: "Home Audio" };
   fetch(" https://boat-backend-1ffa.onrender.com/boat/Products", {
     method: "POST", // or 'PUT'
