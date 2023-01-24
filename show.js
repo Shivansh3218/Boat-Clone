@@ -53,10 +53,3 @@ function bomb2() {
   }
  
 }
-
-// ${data[0].productName}
-// ${data[0].rating}
-//  ${data[0].noOfReviews} 
-//  ${data[0].color} 
-//  ${data[0].price} 
-//  ${data[0].originalPrice}
