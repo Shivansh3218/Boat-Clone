@@ -77,7 +77,7 @@ let emptybasket = document.querySelector(".empty");
   let total1=0;
   let sum1=0;
 
-  for(let i=0;i<cartArray.length;i++){
+  for(let i=0;i<cartArray?.length;i++){
     const data = { _id : `${cartArray[i].id._id}` };
     fetch(" https://boat-backend-1ffa.onrender.com/boat/Products", {
         method: "POST", // or 'PUT'
