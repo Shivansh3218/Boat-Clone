@@ -31,7 +31,9 @@
     text-decoration: line-through;
     font-weight: bolder;
 }
-
+.productname{
+  font-size: 12px !important;
+}
 .money_spending_and_saving {
     /* margin-top: 10rem; */
     background-color:#efefef;

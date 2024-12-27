@@ -1,5 +1,6 @@
 html{
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 .productname {
   white-space: nowrap;
@@ -474,7 +475,10 @@ hr {
   display: grid;
   text-align: center;
 }
-
+.productname{
+  font-size: 12px;
+  width: 100%;
+}
 .flash-sale-end-format span {
   display: block;
   text-transform: uppercase;
@@ -534,8 +538,8 @@ hr {
   }
 
   .best-seller-image-front, .best-seller-image-back {
-    width: 140px;
-    height: 150px;
+    width: 150px;
+    height: 180px;
   }
 
   .best-seller-div {
@@ -587,6 +591,7 @@ hr {
     height: 35px;
   }
 
+ 
   .flash-sale-heading {
     font-size: 14px;
   }
@@ -661,7 +666,7 @@ padding-top: 20px;
     }
     
     .wrapper-of-best-seller-images {
-        height: 160px;
+        height: 180px;
     }
     
     .heading-of-carousels {
@@ -680,4 +685,67 @@ padding-top: 20px;
     .current-price {
         font-size: medium;
     }
+}
+
+/* Default styles */
+.productname-video {
+  font-size: 1.2rem;  /* Default size for larger screens */
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+/* Media queries for phones */
+@media screen and (max-width: 768px) {
+  .productname-video {
+    font-size: 0.9rem;  /* Smaller size for phones */
+  }
+}
+
+/* Even smaller screens */
+@media screen and (max-width: 480px) {
+  .productname-video {
+    font-size: 0.8rem;  /* Even smaller for very small phones */
+    margin: 5px 0;
+  }
+}
+
+  /* Default styles */
+.productname {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 10px 0;
+  color: #000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Media query for tablets */
+@media screen and (max-width: 768px) {
+  .productname {
+    font-size: 0.9rem;
+    margin: 8px 0;
+  }
+}
+
+/* Media query for phones */
+@media screen and (max-width: 480px) {
+  .productname {
+    font-size: 12px;
+    margin: 5px 0;
+    line-height: 1.2;
+  }
+  #payment_apps{
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin-left: -2rem;
+}
+
+
+.heading-link{
+  text-decoration: none;
+  color: black;
+width: 100px;
+}
+
 }

@@ -70,7 +70,7 @@ function generateProductHTML(product, isVideo = false) {
                         }"></video>
                     </div>
                     <div class="inside-best-seller-video">
-                        <h3 class="productname-video">${
+                        <h3  class="productname-video">${
                           product.productName
                         }</h3>
                         <hr>
@@ -112,7 +112,7 @@ function generateProductHTML(product, isVideo = false) {
                     }" alt="">
                 </div>
                 <div class="inside-best-seller">
-                    <a href="./show.html"><h3 class="productname" id="${
+                    <a href="./show.html" class="heading-link"><h3 class="productname" id="${
                       product._id
                     }">${product.productName}</h3></a>
                     <p class="icon-para"><i class="fa-solid fa-star" style="color:red;"></i>${
