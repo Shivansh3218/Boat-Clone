@@ -1,197 +1,350 @@
 body {
     background-color: rgb(0, 0, 0);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Press Section */
 .head-1 {
     color: rgb(255, 255, 255);
     text-align: center;
-    font-size: xx-large;
-    margin-bottom: -5rem;
-}
-.quotes-of-news-div{
-display: flex;
-}
-p{
-    display: flex;
-    align-items: center;
-    width: 40rem;
-    color: white;
-}
-#hash{
-    color: rgb(255, 0, 0);
-    font-size: xx-large;
-    margin: 10rem;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: -2rem;
+    padding: 2rem 1rem;
 }
 
+.quotes-of-news-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem 1rem;
+}
+
+p {
+    display: flex;
+    align-items: center;
+    max-width: 40rem;
+    width: 90%;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#hash {
+    color: rgb(255, 0, 0);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin: 2rem;
+}
 
 .buttons-div {
     display: flex;
-    margin-top: -3rem;
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+    margin-top: 0;
+}
+
+.logo-item {
+    background: none;
+    border: none;
+    padding: 0;
+    transition: transform 0.3s ease;
+}
+
+.logo-item:hover {
+    transform: scale(1.1);
 }
 
 .logo-image-news {
-    width: 13rem;
-    background: none;
+    width: clamp(8rem, 15vw, 13rem);
+    height: auto;
     filter: grayscale(1);
     opacity: 0.2;
-    height: 5rem;
+    transition: all 0.3s ease;
 }
 
-.first-para{
-  transition: 1s;
-}
-.logo-image-news:hover{
-    opacity: 1.5;
+.logo-image-news:hover {
+    opacity: 1;
     filter: none;
 }
 
+/* Numbers Worldwide Section */
 .numbers-worldwide-div {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 2rem 1rem;
 }
 
 .numbers-worldwide {
-    /* width: 80rem; */
     width: 100%;
-    height: 100%;
-    /* height: 40rem; */
+    max-width: 1200px;
+    height: auto;
 }
 
+/* Brand Promise Section */
 .promise {
     color: whitesmoke;
     text-align: center;
-    padding-bottom: 3rem;
+    padding: 2rem 0;
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+}
 
-}
-.wrapper-ofpromise{
-    display: flex;
-    gap: 3rem;
-    width: 20rem;
-}
-.benifits{
+.benifits {
     display: flex;
     justify-content: center;
-    margin-left:8rem ;
-  
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.wrapper-ofpromise {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: auto;
+    min-width: 200px;
 }
 
 .text-of-benifits {
-    color: white; 
+    color: white;
+    margin: 0;
 }
 
 .image-of-benifits {
     width: 3rem;
-    margin-top: 0.5rem;
     height: 2rem;
+    object-fit: contain;
+}
+
+/* Footer Content */
+.below-brand-promise {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 3rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.boat-advertisement {
+    color: white;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.subscribe-to-boat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
 .boat-logo-section {
     width: 8rem;
     height: 3rem;
+    object-fit: contain;
 }
 
 .promise-not-to-spam {
     color: aliceblue;
-    padding: 3rem 0 3rem;
-}
-
-.below-brand-promise {
-    margin-left: 2rem;
-    display: flex;
-    justify-content: space-around;
-}
-.boat-advertisement{
-    color: white;
+    padding: 1rem 0;
     text-align: center;
-    margin-left:  10rem ;
-    padding: 5rem;
- 
 }
-
 
 .email-subscribe-box {
     border: 1px solid blanchedalmond;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     padding: 0.2rem;
     margin-bottom: 2rem;
+    max-width: 400px;
+    width: 100%;
 }
 
 #email-box {
     border: none;
-    width: 14rem;
+    flex: 1;
     background-color: inherit;
     height: 40px;
     color: whitesmoke;
+    padding: 0 1rem;
 }
 
 .subscribe {
     color: rgb(255, 255, 255);
-    padding: 0.5rem;
-    width: 8rem;
+    padding: 0.5rem 1rem;
     background-color: red;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
+.subscribe:hover {
+    background-color: #cc0000;
 }
 
 .social-media-icons {
     display: flex;
-    gap: 01rem;
-    margin-left: 4rem;
+    gap: 1rem;
+    justify-content: center;
+}
 
-}
-.btnn{
-    width: 2rem;
-}
 .social-icon {
     background: inherit;
     color: rgb(255, 255, 255);
+    border: none;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
-
 
 .social-icon:hover {
-    cursor: pointer;
-    transition: 0.5s;
-    color: black;
-}
-h1{
-    color: aliceblue;
-}
-a{
-    text-decoration: none;
-    color: rgb(230, 230, 230);
-}
-a:hover{
-    color: blueviolet;
-}
-.links-of-company{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-.bottom-above-footer{
-    margin:4rem ;
-    display: flex;
-    justify-content: space-between;
-}
-.get-app-on{
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-}
-button{
-    background: inherit;
-}
-button:hover{
-    cursor: pointer;
-   
-}
-h3{
-    color: white;
+    color: #ff0000;
+    transform: translateY(-3px);
 }
 
-footer{
+.links-of-company {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.links-of-company a {
+    color: rgb(230, 230, 230);
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.links-of-company a:hover {
+    color: #ff0000;
+}
+
+h1 {
+    color: aliceblue;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    margin-bottom: 1.5rem;
+}
+
+.bottom-above-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.get-app-on {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.get-app-on button {
+    background: none;
+    border: none;
+    padding: 0;
+    transition: transform 0.3s ease;
+}
+
+.get-app-on button:hover {
+    transform: scale(1.05);
+}
+
+.get-app-on h3 {
+    margin: 0;
+    white-space: nowrap;
+}
+
+footer {
     color: white;
     text-align: center;
-    padding: 5rem;
+    padding: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+    .below-brand-promise {
+        padding: 2rem;
+    }
+    
+    .boat-advertisement {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #hash {
+        margin: 1rem;
+    }
+    
+    .benifits {
+        margin-left: 0;
+    }
+    
+    .wrapper-ofpromise {
+        width: auto;
+    }
+    
+    .bottom-above-footer {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .get-app-on {
+        justify-content: center;
+    }
+    
+    .email-subscribe-box {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .quotes-of-news-div {
+        flex-direction: column;
+    }
+    
+    #hash {
+        margin: 0.5rem;
+    }
+    
+    .buttons-div {
+        gap: 1rem;
+    }
+    
+    .below-brand-promise {
+        text-align: center;
+    }
+    
+    .links-of-company {
+        align-items: center;
+    }
+    
+    .email-subscribe-box {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .subscribe {
+        width: 100%;
+    }
+    
+    .boat-advertisement {
+        margin: 0;
+        padding: 1rem;
+    }
 }

@@ -16,10 +16,10 @@ const cartItems = document.querySelector(".cart_items");
 const cartMain = document.querySelector(".cart_main");
 const empty = document.querySelector(".empty");
 
-const API_URL = "https://boat-backend-1ffa.onrender.com/boat/Products";
+const API_URL = "https://boat-backend-1ffa.onrender.com/api/products";
 
-// Cart state
-let basket = JSON.parse(sessionStorage.getItem("cartData")) || [];
+// Cart state - Changed to localStorage
+let basket = JSON.parse(localStorage.getItem("cartData")) || [];
 let total = 0;
 let sum = 0;
 
@@ -98,7 +98,7 @@ function generateProductHTML(product, isVideo = false) {
   const buttonClass = tagClass ? "red-button" : "";
 
   return `
-        <div class="main">
+        <div class="main" data-product='${JSON.stringify(product)}'>
             <div class="best-seller-div">
                 <div class="wrapper-of-best-seller-images">
                     <div class="flash ${tagClass}">${tagClass ? "" : "🗲"}${
@@ -126,8 +126,8 @@ function generateProductHTML(product, isVideo = false) {
                     <p class="save-money">You Save: ₹${
                       product.originalPrice - product.price
                     } (${product.offer}%)</p>
-                    <button class="button-flash-sale ${buttonClass}" id="${
-    product.productName
+                    <button class="button-flash-sale ${buttonClass}" data-product-id="${
+    product._id
   }">ADD TO CART</button>
                 </div>
             </div>
@@ -149,124 +149,145 @@ async function fetchProducts(category) {
   }
 }
 
-// Cart management
+// Updated Cart Functions
+function handleAddToCart(product) {
+  console.log(product," this is clincked");
+  // Check if product already exists in cart
+  const existingProduct = basket.find((item) => item._id === product._id);
+
+  if (existingProduct) {
+    alert("Item already in cart!");
+    return;
+  }
+
+  // Add product to basket
+  basket.push({
+    ...product,
+    quantity: 1,
+    total: product.price,
+  });
+
+  // Save to localStorage
+  localStorage.setItem("cartData", JSON.stringify(basket));
+
+  // Update UI
+  updateCartUI();
+  renderCartItems();
+}
+
 function updateCartUI() {
   const subtotal = document.querySelector(".subtotal");
   const updateCart = document.querySelector(".updateCart");
   const basItem = document.querySelector(".basItem");
   const checkoutSubtotal = document.querySelector(".checkout_subtotal");
 
-  sum = basket.reduce((acc, item) => acc + item.item, 0);
-  total = basket.reduce((acc, item) => acc + item.total, 0);
+  // Calculate totals
+  sum = basket.reduce((acc, item) => acc + (item.quantity || 1), 0);
+  total = basket.reduce(
+    (acc, item) => acc + item.price * (item.quantity || 1),
+    0
+  );
 
-  subtotal.innerText = `₹ ${total}`;
-  updateCart.innerText = sum;
-  basItem.innerText = sum;
+  // Update UI elements
+  if (subtotal) subtotal.innerText = `₹ ${total}`;
+  if (updateCart) updateCart.innerText = sum;
+  if (basItem) basItem.innerText = sum;
   if (checkoutSubtotal) checkoutSubtotal.innerText = `₹ ${total}`;
 
-  sessionStorage.setItem("cartData", JSON.stringify(basket));
-  sessionStorage.setItem("totalItems", JSON.stringify(sum));
-  sessionStorage.setItem("sumTotal", JSON.stringify(total));
+  // Save to localStorage
+  localStorage.setItem("cartData", JSON.stringify(basket));
+  localStorage.setItem("totalItems", JSON.stringify(sum));
+  localStorage.setItem("sumTotal", JSON.stringify(total));
 }
 
-function renderCartItem(product) {
-  const cartHtml = `
-        <div class="cartWrap" id="cartWrap_${product._id}">
-            <img src="${
-              product.productImages[0]
-            }" alt="" width="50%" height="50%">
-            <div class="cart-right">
-                <h5>${product.productName}</h5>
-                <div class="price-cart">
-                    <h4 id="updated_${product._id}">₹${product.price}</h4>
-                    <h4 class="strike" id="strike_${product._id}">₹${
-    product.originalPrice
-  }</h4>
-                    <i class="fa-solid fa-trash" id="trash_${product._id}"></i>
-                </div>
-                <div class="cart-button">
-                    <i class="fa-solid fa-minus" id="minus_${product._id}"></i>
-                    <span id="quantity_${product._id}">1</span>
-                    <i class="fa-solid fa-plus" id="plus_${product._id}"></i>
-                    <h5>${product.color?.[0] || ""}</h5>
-                </div>
-            </div>
-        </div>`;
+function renderCartItems() {
+  if (!cartMain) return;
 
-  const checkoutHtml = `
-        <div class="cartWraping">
-            <img src="${product.productImages[0]}" alt="" width="50%" height="50%">
-            <div class="cart-right">
-                <h3>${product.productName}</h3>
-                <div class="price-cart">
-                    <h3 id="updatedd_${product._id}">₹${product.price}</h3>
-                    <h5 id="quantityy_${product._id}">Quantity:1</h5>
-                </div>
-            </div>
-        </div>`;
-
-  cartMain.innerHTML += cartHtml;
-  cartItems.innerHTML += checkoutHtml;
-}
-
-// Event handlers
-async function handleAddToCart(productName) {
-  const products = await fetchProducts({ productName });
-  const product = products[0];
-
-  if (!product) return;
-
-  if (basket.some((item) => item.id.productName === product.productName)) {
-    alert("Item Already Added! Check Cart!");
+  if (basket.length === 0) {
+    cartMain.innerHTML = `
+      <h5>Your cart is empty</h5>
+      <button class="strtbtn">START SHOPPING</button>
+    `;
     return;
   }
 
-  basket.push({
-    id: product,
-    item: 1,
-    total: product.price,
-  });
+  cartMain.innerHTML = basket
+    .map(
+      (item) => `
+    <div class="cartWrap" id="cartWrap_${item._id}">
+      <img src="${item.productImages[0]}" alt="" width="50%" height="50%">
+      <div class="cart-right">
+        <h5>${item.productName}</h5>
+        <div class="price-cart">
+          <h4 id="updated_${item._id}">₹${
+        item.price * (item.quantity || 1)
+      }</h4>
+          <h4 class="strike" id="strike_${item._id}">₹${
+        item.originalPrice * (item.quantity || 1)
+      }</h4>
+          <i class="fa-solid fa-trash" onclick="removeFromCart('${
+            item._id
+          }')"></i>
+        </div>
+        <div class="cart-button">
+          <i class="fa-solid fa-minus" onclick="updateQuantity('${
+            item._id
+          }', 'decrease')"></i>
+          <span id="quantity_${item._id}">${item.quantity || 1}</span>
+          <i class="fa-solid fa-plus" onclick="updateQuantity('${
+            item._id
+          }', 'increase')"></i>
+          <h5>${item.color?.[0] || ""}</h5>
+        </div>
+      </div>
+    </div>
+  `
+    )
+    .join("");
 
-  renderCartItem(product);
-  updateCartUI();
+  // Update checkout items if they exist
+  if (cartItems) {
+    cartItems.innerHTML = basket
+      .map(
+        (item) => `
+      <div class="cartWraping">
+        <img src="${item.productImages[0]}" alt="" width="50%" height="50%">
+        <div class="cart-right">
+          <h3>${item.productName}</h3>
+          <div class="price-cart">
+            <h3 id="updatedd_${item._id}">₹${
+          item.price * (item.quantity || 1)
+        }</h3>
+            <h5 id="quantityy_${item._id}">Quantity:${item.quantity || 1}</h5>
+          </div>
+        </div>
+      </div>
+    `
+      )
+      .join("");
+  }
 }
 
-function handleCartAction(productId, action) {
-  const itemIndex = basket.findIndex((item) => item.id._id === productId);
-  if (itemIndex === -1) return;
+function removeFromCart(productId) {
+  basket = basket.filter((item) => item._id !== productId);
+  localStorage.setItem("cartData", JSON.stringify(basket));
+  updateCartUI();
+  renderCartItems();
+}
 
-  const item = basket[itemIndex];
-  const quantityElement = document.querySelector(`#quantity_${productId}`);
-  const checkoutQuantityElement = document.querySelector(
-    `#quantityy_${productId}`
-  );
-  const priceElement = document.querySelector(`#updated_${productId}`);
-  const checkoutPriceElement = document.querySelector(`#updatedd_${productId}`);
-  const strikePriceElement = document.querySelector(`#strike_${productId}`);
+function updateQuantity(productId, action) {
+  const item = basket.find((item) => item._id === productId);
+  if (!item) return;
 
-  switch (action) {
-    case "plus":
-      item.item++;
-      break;
-    case "minus":
-      if (item.item > 1) item.item--;
-      break;
-    case "trash":
-      basket.splice(itemIndex, 1);
-      document.querySelector(`#cartWrap_${productId}`).style.display = "none";
-      updateCartUI();
-      return;
+  if (action === "increase") {
+    item.quantity = (item.quantity || 1) + 1;
+  } else if (action === "decrease" && item.quantity > 1) {
+    item.quantity = item.quantity - 1;
   }
 
-  item.total = item.id.price * item.item;
-
-  quantityElement.innerText = item.item;
-  checkoutQuantityElement.innerText = `Quantity:${item.item}`;
-  priceElement.innerText = `₹${item.total}`;
-  checkoutPriceElement.innerText = `₹${item.total}`;
-  strikePriceElement.innerText = `₹${item.id.originalPrice * item.item}`;
-
+  localStorage.setItem("cartData", JSON.stringify(basket));
   updateCartUI();
+  renderCartItems();
 }
 
 // Initialize application
@@ -298,19 +319,23 @@ async function initializeApp() {
     }
   }
 
-  // Event Listeners
-  mainSection.addEventListener("click", async (e) => {
+  // Add event listener for add to cart buttons using event delegation
+  document.addEventListener("click", function (e) {
     if (e.target.classList.contains("button-flash-sale")) {
-      await handleAddToCart(e.target.id);
-    } else if (e.target.classList.contains("productname")) {
-      sessionStorage.setItem("transferdata", JSON.stringify(e.target.id));
+      const productContainer = e.target.closest(".main");
+      if (productContainer) {
+        try {
+          const product = JSON.parse(productContainer.dataset.product);
+          handleAddToCart(product);
+        } catch (error) {
+          console.error("Error parsing product data:", error);
+        }
+      }
     }
   });
 
-  cartMain.addEventListener("click", (e) => {
-    const [action, id] = e.target.id.split("_");
-    if (id) handleCartAction(id, action);
-  });
+  // Initialize cart UI
+  renderCartItems();
 
   // Marvel/DC toggle
   const marvelDiv = document.querySelector(".marvel-div");

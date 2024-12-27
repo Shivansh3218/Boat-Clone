@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>boAt - Product Search</title>
+    <link rel="stylesheet" href="searchbox.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+   
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="window.location.href='/'">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+
+    <div class="search-container">
+        <div class="search-wrapper">
+            <input type="text" class="search" placeholder="Search for boAt products..." autofocus />
+            <button type="button" class="search-button">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </div>
+    </div>
+
+    <div class="search-results"></div>
+
+    <script>
+        const API_URL = "https://boat-backend-1ffa.onrender.com/api/products";
+        const searchInput = document.querySelector(".search");
+        const searchButton = document.querySelector(".search-button");
+        const resultsContainer = document.querySelector(".search-results");
+
+        // Ensure focus on input field when page loads
+        window.onload = () => {
+            searchInput.focus();
+        }
+
+        function generateProductCard(product) {
+            const savings = product.originalPrice - product.price;
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            
+            card.innerHTML = `
+                <div class="product-image">
+                    <img src="${product.productImages[0]}" alt="${product.productName}">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">${product.productName}</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        ${product.rating} · ${product.noOfReviews} reviews
+                    </div>
+                    <div class="price-info">
+                        <span class="current-price">₹${product.price}</span>
+                        <span class="original-price">₹${product.originalPrice}</span>
+                    </div>
+                    <div class="savings">
+                        You Save: ₹${savings} (${product.offer}%)
+                    </div>
+                    <button class="add-to-cart" data-product="${product.productName}">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            `;
+            return card;
+        }
+
+        function showLoading() {
+            resultsContainer.innerHTML = `
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                </div>
+            `;
+        }
+
+        async function searchProducts(searchTerm) {
+            try {
+                showLoading();
+                const response = await fetch(`${API_URL}/search?term=${searchTerm}`);
+                
+                if (!response.ok) throw new Error('Network response was not ok');
+                
+                const products = await response.json();
+                resultsContainer.innerHTML = '';
+
+                if (products.length > 0) {
+                    products.forEach((product, index) => {
+                        const card = generateProductCard(product, index);
+                        resultsContainer.appendChild(card);
+                    });
+                } else {
+                    resultsContainer.innerHTML = `
+                        <div class="no-results">
+                            <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <p>No products found matching "${searchTerm}"</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                resultsContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-exclamation-circle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <p>An error occurred while searching. Please try again.</p>
+                    </div>
+                `;
+            }
+        }
+
+        searchButton.addEventListener('click', () => {
+            const searchTerm = searchInput.value.trim();
+            if (searchTerm) searchProducts(searchTerm);
+        });
+
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const searchTerm = searchInput.value.trim();
+                if (searchTerm) searchProducts(searchTerm);
+            }
+        });
+
+        resultsContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('add-to-cart')) {
+                const productName = e.target.dataset.product;
+                console.log(`Adding to cart: ${productName}`);
+                // Add your cart functionality here
+            }
+        });
+    </script>
+</body>
+</html>

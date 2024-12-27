@@ -1,174 +1,168 @@
+// DOM Elements
 const exploreBlogBtn = document.querySelector(".explore_blog_btn");
-const earPhoneImg = document.querySelector(".earphone_imgDiv");
-const smartWatchImg = document.querySelector(".smartwatch_imgDiv");
-const groomKitImg = document.querySelector(".groomkit_imgDiv");
-const newTab = document.getElementById("new_tab").href;
-
-exploreBlogBtn.addEventListener("click", function () {
-  window.open("https://www.boat-lifestyle.com/blogs/blog", "_self");
-});
-
-// -------------------------------------------------
+const boatBlogRow = document.querySelector(".boat_blogs_row");
+const contentRow = document.querySelector(".content_row");
 const mainContainer = document.querySelectorAll(".main_container_");
 const rightBtn = document.querySelector(".arrow_right");
 const leftBtn = document.querySelector(".arrow_left");
 
+// Constants
+// var API_URL = "https://boat-backend-1ffa.onrender.com/api/products";
 let counter = 0;
 
-mainContainer.forEach((item, index) => {
-  item.style.left = `${index * 100}%`;
-});
+// Blog Links
+const BLOG_LINKS = {
+  earphone: "/body/Earphones_buying_Guide/index.html",
+  smartwatch: "/body/Smartwatch_guide/index.html",
+  groomingKit: "/body/Grooming_kit/index.html",
+};
 
-rightBtn.addEventListener("click", function () {
-  counter++;
-  if (counter == 4) {
-    counter = 3;
+// Helper Functions
+async function fetchData(description) {
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ description }),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error(`Error fetching ${description}:`, error);
+    return [];
   }
-  slideMainContainer();
-});
+}
 
-leftBtn.addEventListener("click", function () {
-  counter--;
-  if (counter < 0) {
-    counter = 0;
-  }
+function createBlogCard(item, linkPath) {
+  return `
+    <div class="boat_blogs_imgDiv" id="${item._id}">
+      <a href="${linkPath}">
+        <img src="${item.productImages[0]}" class="boat_blogs_img" alt="${
+    item.productName || "Blog Image"
+  }">
+        <div class="buying_guide">
+          <h3 class="baot_blogs_imgtxt">${item.img_belowtxt || ""}</h3>
+        </div>
+      </a>
+    </div>
+  `;
+}
 
-  slideMainContainer();
-});
+function createContentCard(item) {
+  return `
+    <div class="img_box">
+      <div class="img_divs">
+        <img src="${item.productImages[0]}" class="device_img" alt="${
+    item.productName || "Product Image"
+  }" />
+      </div>
+      <div class="img_content">
+        <p class="img_description">${item.content || ""}</p>
+        <button class="shop_now_btn shop_btn" data-id="${
+          item._id
+        }">SHOP NOW</button>
+      </div>
+    </div>
+  `;
+}
 
-const slideMainContainer = () => {
+// Slider Functions
+function initializeSlider() {
+  if (!mainContainer.length) return;
+
+  mainContainer.forEach((item, index) => {
+    item.style.left = `${index * 100}%`;
+  });
+}
+
+function slideMainContainer() {
   mainContainer.forEach((item) => {
     item.style.transform = `translateX(-${counter * 100}%)`;
   });
-};
-
-// -----------------------Explore blogs
-const boatBlogRow = document.querySelector(".boat_blogs_row");
-
-function generateEarphoneGuide() {
-  const data = { description: "boAt Blogs 1" };
-  fetch(" https://boat-backend-1ffa.onrender.com/boat/Products", {
-    method: "POST", // or 'PUT'
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((res) => res.json())
-    .then((result) => {
-      console.log(result);
-
-      for (let i = 0; i < result.length; i++) {
-        let finalresult = `<div class="boat_blogs_imgDiv1" id="${result[i]._id}">
-                          <a href="/body/Earphones_buying_Guide/index.html"><img src="${result[i].productImages[0]}" class="boat_blogs_img" alt=""></a>
-                          <div class="buying_guide">
-                          <a href="/body/Earphones_buying_Guide/index.html"><h3 class="baot_blogs_imgtxt">${result[i].img_belowtxt}</h3></a>
-                          </div>
-                        </div>`;
-        boatBlogRow.innerHTML += finalresult;
-      }
-    });
-}
-generateEarphoneGuide();
-// ----------------------------------
-
-function smartWatchGuide() {
-  const data = { description: "boAt Blogs 2" };
-  fetch(" https://boat-backend-1ffa.onrender.com/boat/Products", {
-    method: "POST", // or 'PUT'
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((res) => res.json())
-    .then((result) => {
-      console.log(result);
-
-      for (let i = 0; i < result.length; i++) {
-        let finalresult = `<div class="boat_blogs_imgDiv2" id="${result[i]._id}">
-              <a href="/body/Smartwatch_guide/index.html"> <img src="${result[i].productImages[0]}" class="boat_blogs_img" alt=""></a>
-                          <div class="buying_guide">
-                          <a href="/body/Smartwatch_guide/index.html"><h3 class="baot_blogs_imgtxt">${result[i].img_belowtxt}</h3></a>
-                          </div>
-                        </div>`;
-        boatBlogRow.innerHTML += finalresult;
-      }
-    });
-}
-smartWatchGuide();
-
-function groomingKit() {
-  const data = { description: "boAt Blogs 3" };
-  fetch(" https://boat-backend-1ffa.onrender.com/boat/Products", {
-    method: "POST", // or 'PUT'
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((res) => res.json())
-    .then((result) => {
-      console.log(result);
-
-      for (let i = 0; i < result.length; i++) {
-        let finalresult = `<div class="boat_blogs_imgDiv3" id="${result[i]._id}">
-              <a href="/body/Grooming_kit/index.html">  <img src="${result[i].productImages[0]}" class="boat_blogs_img" alt=""></a>
-                          <div class="buying_guide">
-                          <a href="/body/Grooming_kit/index.html"><h3 class="baot_blogs_imgtxt">${result[i].img_belowtxt}</h3></a>
-                          </div>
-                        </div>`;
-        boatBlogRow.innerHTML += finalresult;
-      }
-    });
-}
-groomingKit();
-
-// -------------WHat They Say About Us
-
-const ContentRow = document.querySelector(".content_row");
-
-function whatTheySayAboutUs() {
-
-const data = { description: "What They Say About Us" };
-  fetch(" https://boat-backend-1ffa.onrender.com/boat/Products", {
-    method: "POST", // or 'PUT'
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((shopOutput) => {
-      console.log(shopOutput);
-      for (let i = 0; i < shopOutput.length; i++) {
-        let finalresult = `<div class="img_box">
-            <div class="img_divs">
-              <img src=${shopOutput[i].productImages[0]} class="device_img" alt="" />
-            </div>
-            <div class="img_content">
-              <p class="img_description">${shopOutput[i].content}</p>
-              <button class="shop_now_btn shop_btn" id="${shopOutput[i]._id}">SHOP NOW</button>
-            </div>
-          </div>`;
-
-        ContentRow.innerHTML += finalresult;
-
-        let shopNowBtn=document.querySelector(".shop_now_btn");
-       
-      }
-      ContentRow.addEventListener("click",(e)=>{
-        if(e.target.id==shopOutput[0]._id){
-         window.location.assign("#best_sound_home_audio","_self")
-        }
-        if(e.target.id==shopOutput[1]._id){
-          window.location.assign("#trending_wireless_earphones")
-        }
-        if(e.target.id==shopOutput[2]._id){
-          window.location.assign("#top_earbuds_amazing_product")
-        }
-      })
-    });
 }
 
-whatTheySayAboutUs();
+// Blog Generation Functions
+async function generateBlogSection(description, linkPath) {
+  if (!boatBlogRow) return;
+
+  const data = await fetchData(description);
+  const blogContent = data
+    .map((item) => createBlogCard(item, linkPath))
+    .join("");
+  boatBlogRow.insertAdjacentHTML("beforeend", blogContent);
+}
+
+// Content Generation Function
+async function generateContent() {
+  if (!contentRow) return;
+
+  const data = await fetchData("What They Say About Us");
+  const content = data.map(createContentCard).join("");
+  contentRow.innerHTML = content;
+
+  // Add click handlers for shop now buttons
+  const shopButtons = contentRow.querySelectorAll(".shop_now_btn");
+  shopButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const id = button.dataset.id;
+      handleShopNowClick(id, data);
+    });
+  });
+}
+
+// Event Handlers
+function handleShopNowClick(id, data) {
+  const sections = {
+    [data[0]?._id]: "#best_sound_home_audio",
+    [data[1]?._id]: "#trending_wireless_earphones",
+    [data[2]?._id]: "#top_earbuds_amazing_product",
+  };
+
+  const targetSection = sections[id];
+  if (targetSection) {
+    window.location.assign(targetSection);
+  }
+}
+
+// Initialize Everything
+async function initializeContent() {
+  try {
+    // Initialize slider
+    initializeSlider();
+
+    // Generate blog sections
+    await Promise.all([
+      generateBlogSection("boAt Blogs 1", BLOG_LINKS.earphone),
+      generateBlogSection("boAt Blogs 2", BLOG_LINKS.smartwatch),
+      generateBlogSection("boAt Blogs 3", BLOG_LINKS.groomingKit),
+    ]);
+
+    // Generate content section
+    await generateContent();
+  } catch (error) {
+    console.error("Error initializing content:", error);
+  }
+}
+
+// Event Listeners
+document.addEventListener("DOMContentLoaded", () => {
+  // Initialize content
+  initializeContent();
+
+  // Blog explore button
+  exploreBlogBtn?.addEventListener("click", () => {
+    window.open("https://www.boat-lifestyle.com/blogs/blog", "_self");
+  });
+
+  // Slider controls
+  rightBtn?.addEventListener("click", () => {
+    counter = Math.min(counter + 1, mainContainer.length - 1);
+    slideMainContainer();
+  });
+
+  leftBtn?.addEventListener("click", () => {
+    counter = Math.max(counter - 1, 0);
+    slideMainContainer();
+  });
+});

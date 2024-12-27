@@ -124,7 +124,10 @@
             </div>
           </div>
           <div class="header_nav-right" onmouseover="remove()">
-            <input class="header-input" type="search" placeholder="Search..." />
+            <a href="/searchbox.html">
+               <input class="header-input" type="search" placeholder="Search..." />
+            </a>
+           
 
             <i class="fa-solid fa-user logadd"></i>
             <div class="login">
@@ -412,7 +415,7 @@
         function enterKeyPressed(event){
           if(event.keyCode==13){
             divvv.innerHTML =""
-              fetch(" https://boat-backend-1ffa.onrender.com/boat/Products", {
+              fetch(" https://boat-backend-1ffa.onrender.com/api/products", {
                   method: "POST", // or 'PUT'
                   headers: {
                       "Content-Type": "application/json",
@@ -460,7 +463,7 @@
           
           buttonSSearch.addEventListener("click",function (){
               divvv.innerHTML =""
-              fetch(" https://boat-backend-1ffa.onrender.com/boat/Products", {
+              fetch(" https://boat-backend-1ffa.onrender.com/api/products", {
                   method: "POST", // or 'PUT'
                   headers: {
                       "Content-Type": "application/json",
@@ -643,14 +646,14 @@
           <div readonly class="video-container"></div>
         </section>
         <!-- ------------------------------------------- -->
-        <div class="boat_blogs_container">
+        <!-- <div class="boat_blogs_container">
           <h1 class="boat_blogs_heading">boAt Blogs</h1>
           <div class="boat_blogs_row"></div>
-          <!-- </div> -->
+         
 
           <div class="explore_blog_div">
             <button class="explore_blog_btn">EXPLORE BLOGS</button>
-          </div>
+          </div> -->
         </div>
         <div class="main_">
           <div class="main_container_">
